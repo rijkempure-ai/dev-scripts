@@ -3,37 +3,57 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-        body { background: #050505; color: #fff; font-family: 'Arial', sans-serif; padding: 15px; margin: 0; }
-        .header { text-align: center; font-size: 28px; font-weight: 800; margin-bottom: 20px; color: #00ffcc; text-transform: uppercase; }
-        .stats-bar { background: #111; padding: 15px; border-radius: 15px; margin-bottom: 20px; border: 1px solid #333; text-align: center; }
-        #search { width: 100%; padding: 15px; border-radius: 12px; border: 1px solid #444; background: #151515; color: white; margin-bottom: 20px; box-sizing: border-box; }
-        .card { background: #111; border-radius: 20px; margin-bottom: 20px; border: 1px solid #333; overflow: hidden; }
-        .card img { width: 100%; height: 150px; object-fit: cover; }
-        .card-content { padding: 15px; }
-        .copy-btn { background: #00ffcc; border: none; padding: 12px; border-radius: 10px; color: #000; font-weight: bold; width: 100%; cursor: pointer; }
+        body { background: #0a0a0a; color: #fff; font-family: sans-serif; padding: 15px; }
+        .header { text-align: center; font-size: 24px; color: #00ffcc; margin-bottom: 20px; }
+        #search { width: 100%; padding: 15px; border-radius: 10px; border: 1px solid #444; background: #1a1a1a; color: #fff; margin-bottom: 20px; box-sizing: border-box; }
+        .card { background: #1a1a1a; border-radius: 15px; margin-bottom: 20px; padding: 15px; border: 1px solid #333; }
+        .card img { width: 100%; height: 150px; object-fit: cover; border-radius: 10px; margin-bottom: 10px; }
+        .btn { background: #00ffcc; border: none; padding: 12px; width: 100%; border-radius: 8px; font-weight: bold; cursor: pointer; }
     </style>
 </head>
 <body>
-    <div class="header">DEV SCRIPTS</div>
-    <div class="stats-bar">Total Scripts Available: <span id="count">0</span></div>
-    <input type="text" id="search" placeholder="🔍 Search for your game..." onkeyup="filter()">
+    <div class="header">⚡ DEV SCRIPTS</div>
+    <input type="text" id="search" placeholder="🔍 Search games..." onkeyup="filter()">
     <div id="container"></div>
 
     <script>
         const scripts = [
-            { name: "99 Nights in the Forest", img: "[attachment_12](attachment)", url: "loadstring(game:HttpGet('https://pastebin.com/raw/LPbPPNpC'))()" },
-            { name: "Blox Fruit (Pvp)", img: "[attachment_0](attachment)", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/hermanos-dev/hermanos-hub/refs/heads/main/Loader.lua'))()" },
-            { name: "Squid X Game 3", img: "[attachment_4](attachment)", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/madenciicom/squidgamex/refs/heads/main/SquidGameX_KaiXar.lua'))()" },
-            { name: "Elemental Dungeons", img: "[attachment_8](attachment)", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/xpa1n/Scripts/main/ElementalDungeons.lua'))()" }
+            { name: "99 Nights in the Forest", url: "loadstring(game:HttpGet('https://pastebin.com/raw/LPbPPNpC'))()" },
+            { name: "Blox Fruit (Pvp)", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/hermanos-dev/hermanos-hub/refs/heads/main/Loader.lua'))()" },
+            { name: "Squid X Game 3", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/madenciicom/squidgamex/refs/heads/main/SquidGameX_KaiXar.lua'))()" },
+            { name: "1+ Speed Keyboard Escape", url: "loadstring(game:HttpGet('https://www.luxyhub.space/api/loader/luxyhub'))()" },
+            { name: "Elemental Dungeons", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/xpa1n/Scripts/main/ElementalDungeons.lua'))()" },
+            { name: "Blox fruits (Grinding)", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/flazhy/QuantumOnyx/refs/heads/main/QuantumOnyx.lua'))()" },
+            { name: "Rivals", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/awakeningswifters/LexusHubLoader/refs/heads/main/Loader.lua'))()" },
+            { name: "Slime Rng", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/zenirh/BestScriptsHub/refs/heads/main/HubMenu.lua'))()" },
+            { name: "Sell lemons", url: "loadstring(game:HttpGet('https://pastefy.app/YjVlc4pj/raw'))()" },
+            { name: "Steal a Brainrot", url: "loadstring(game:HttpGet('https://voidexternal.xyz/api/cnh1ahnm.lua'))()" },
+            { name: "Tha bronx duels", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/sneekygoober/The-Bronx-Duels-Silent-Aim-And-Anti-Jam-Keyless-Script/refs/heads/main/main.luau'))()" },
+            { name: "Jailbreak", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/BlitzlsKing/UniversalFarm/refs/heads/main/Jailbreak/autoRob'))()" },
+            { name: "Monkey Bomb Tag", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/gumanba/Scripts/main/MonkeyBombTag'))()" },
+            { name: "Sailor Piece", url: "loadstring(game:HttpGet('https://api.luarmor.net/files/v3/loaders/d8824b23a4d9f2e0d62b4e69397d206b.lua'))()" },
+            { name: "Attack on Titan", url: "loadstring(game:HttpGet('https://pastebin.com/raw/qcucSQdE'))()" },
+            { name: "Aimbot (All Games)", url: "loadstring(game:HttpGet('https://tvon.pages.dev/lua/AimBot.lua'))()" },
+            { name: "Survive The Apocalypse", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/xploitforceofficial-stack/pinatpublicloader/refs/heads/main/pinatloader.lua'))()" },
+            { name: "Garden Horizon", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/LynX99-9/komtolmmek2/refs/heads/main/Garden%20Horizon'))()" },
+            { name: "Murder Mystery 2", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/xv3gasx/Murder-Mystery-2/refs/heads/main/Release.lua'))()" },
+            { name: "Blox fruits", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/AhmadV99/Speed-Hub-X/main/Speed%20Hub%20X.lua',true))()" },
+            { name: "Mad City", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua'))()" },
+            { name: "Grow a Garden", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/ZusumeHub/ZusumeHub/refs/heads/main/UpdateZysume'))()" },
+            { name: "Phantom Forces", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/jsdhaijs/autofatrm/refs/heads/main/pflite'))()" }
         ];
+
         function render() {
             let container = document.getElementById('container');
             scripts.forEach(s => {
-                container.innerHTML += `<div class="card"><img src="${s.img}"><div class="card-content"><h3>${s.name}</h3><button class="copy-btn" onclick="copy('${s.url}')">COPY SCRIPT</button></div></div>`;
+                container.innerHTML += `<div class="card">
+                    <img src="https://ui-avatars.com/api/?name=${encodeURIComponent(s.name)}&background=000&color=fff&size=256" alt="${s.name}">
+                    <h3>${s.name}</h3>
+                    <button class="btn" onclick="copy('${s.url}')">COPY SCRIPT</button>
+                </div>`;
             });
-            document.getElementById('count').innerText = scripts.length;
         }
-        function copy(text) { navigator.clipboard.writeText(text); alert('Script copied to clipboard!'); }
+        function copy(text) { navigator.clipboard.writeText(text); alert('Copied!'); }
         function filter() {
             let input = document.getElementById('search').value.toLowerCase();
             document.querySelectorAll('.card').forEach(c => c.style.display = c.innerText.toLowerCase().includes(input) ? "" : "none");
