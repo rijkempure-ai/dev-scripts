@@ -3,63 +3,23 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-        body { background: #0a0a0a; color: #fff; font-family: sans-serif; padding: 15px; margin: 0; }
-        .header { text-align: center; font-size: 28px; color: #00ffcc; margin: 20px 0; font-weight: bold; }
-        #search { width: 100%; padding: 15px; border-radius: 12px; border: 1px solid #444; background: #1a1a1a; color: #fff; margin-bottom: 20px; box-sizing: border-box; }
-        .card { background: #1a1a1a; border-radius: 15px; margin-bottom: 20px; padding: 15px; border: 1px solid #333; }
-        .card img { width: 100%; height: 180px; object-fit: cover; border-radius: 10px; margin-bottom: 10px; }
-        .btn { background: #00ffcc; border: none; padding: 15px; width: 100%; border-radius: 8px; font-weight: bold; cursor: pointer; color: #000; font-size: 16px; }
+        body { background: #000; color: #fff; font-family: sans-serif; padding: 20px; }
+        .header { text-align: center; color: #00ffcc; font-size: 24px; margin-bottom: 20px; }
+        .card { background: #111; padding: 15px; border-radius: 10px; margin-bottom: 15px; border: 1px solid #333; }
+        .btn { background: #00ffcc; padding: 10px; width: 100%; border: none; border-radius: 5px; font-weight: bold; }
     </style>
 </head>
 <body>
-    <div class="header">⚡ DEV SCRIPTS</div>
-    <input type="text" id="search" placeholder="🔍 Search games..." onkeyup="filter()">
-    <div id="container"></div>
-
-    <script>
-        const scripts = [
-            { name: "Blox Fruit", img: "https://static.wikia.nocookie.net/bloxfruits/images/d/d7/Blox_Fruits_Logo.png", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/hermanos-dev/hermanos-hub/refs/heads/main/Loader.lua'))()" },
-            { name: "Murder Mystery 2", img: "https://tr.rbxcdn.com/7b165b6b8b0e5d0a1b8c1a1f1e1d1c1a/512/512/Image/Png", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/xv3gasx/Murder-Mystery-2/refs/heads/main/Release.lua'))()" },
-            { name: "Jailbreak", img: "https://tr.rbxcdn.com/f9b4c09d066b1897d266e7b1a646c039/512/512/Image/Png", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/BlitzlsKing/UniversalFarm/refs/heads/main/Jailbreak/autoRob'))()" },
-            { name: "Phantom Forces", img: "https://tr.rbxcdn.com/15291244243685324203133644023412/512/512/Image/Png", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/jsdhaijs/autofatrm/refs/heads/main/pflite'))()" },
-            { name: "Rivals", img: "https://tr.rbxcdn.com/00e84d9f67a224d0818c644144365780/512/512/Image/Png", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/awakeningswifters/LexusHubLoader/refs/heads/main/Loader.lua'))()" }
-        ];
-
-        function render() {
-            let container = document.getElementById('container');
-            container.innerHTML = "";
-            scripts.forEach(s => {
-                container.innerHTML += `<div class="card">
-                    <img src="${s.img}" alt="${s.name}">
-                    <h3>${s.name}</h3>
-                    <button class="btn" onclick="copyToClipboard('${s.url.replace(/'/g, "\\'")}')">COPY SCRIPT</button>
-                </div>`;
-            });
-        }
-
-        function copyToClipboard(text) {
-            // Modern Clipboard API
-            navigator.clipboard.writeText(text).then(() => {
-                alert('Copied to clipboard!');
-            }).catch(() => {
-                // Fallback for older browsers or restricted contexts
-                const textArea = document.createElement("textarea");
-                textArea.value = text;
-                document.body.appendChild(textArea);
-                textArea.select();
-                document.execCommand("copy");
-                document.body.removeChild(textArea);
-                alert('Copied manually!');
-            });
-        }
-
-        function filter() {
-            let input = document.getElementById('search').value.toLowerCase();
-            document.querySelectorAll('.card').forEach(c => {
-                c.style.display = c.innerText.toLowerCase().includes(input) ? "" : "none";
-            });
-        }
-        render();
-    </script>
+    <div class="header">DEV SCRIPTS</div>
+    <div id="list">
+        <div class="card">
+            <h3>Blox Fruit</h3>
+            <button class="btn" onclick="navigator.clipboard.writeText('loadstring(game:HttpGet(\'https://raw.githubusercontent.com/hermanos-dev/hermanos-hub/refs/heads/main/Loader.lua\'))()'); alert('Copied!');">COPY SCRIPT</button>
+        </div>
+        <div class="card">
+            <h3>Murder Mystery 2</h3>
+            <button class="btn" onclick="navigator.clipboard.writeText('loadstring(game:HttpGet(\'https://raw.githubusercontent.com/xv3gasx/Murder-Mystery-2/refs/heads/main/Release.lua\'))()'); alert('Copied!');">COPY SCRIPT</button>
+        </div>
+    </div>
 </body>
 </html>
