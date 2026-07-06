@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { background: #050505; color: #fff; font-family: 'Arial', sans-serif; padding: 15px; margin: 0; }
+        .header { text-align: center; font-size: 28px; font-weight: 800; margin-bottom: 20px; color: #00ffcc; text-transform: uppercase; }
+        .stats-bar { background: #111; padding: 15px; border-radius: 15px; margin-bottom: 20px; border: 1px solid #333; text-align: center; }
+        #search { width: 100%; padding: 15px; border-radius: 12px; border: 1px solid #444; background: #151515; color: white; margin-bottom: 20px; box-sizing: border-box; }
+        .card { background: #111; border-radius: 20px; margin-bottom: 20px; border: 1px solid #333; overflow: hidden; }
+        .card img { width: 100%; height: 150px; object-fit: cover; }
+        .card-content { padding: 15px; }
+        .copy-btn { background: #00ffcc; border: none; padding: 12px; border-radius: 10px; color: #000; font-weight: bold; width: 100%; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="header">DEV SCRIPTS</div>
+    <div class="stats-bar">Total Scripts Available: <span id="count">0</span></div>
+    <input type="text" id="search" placeholder="🔍 Search for your game..." onkeyup="filter()">
+    <div id="container"></div>
+
+    <script>
+        const scripts = [
+            { name: "99 Nights in the Forest", img: "[attachment_12](attachment)", url: "loadstring(game:HttpGet('https://pastebin.com/raw/LPbPPNpC'))()" },
+            { name: "Blox Fruit (Pvp)", img: "[attachment_0](attachment)", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/hermanos-dev/hermanos-hub/refs/heads/main/Loader.lua'))()" },
+            { name: "Squid X Game 3", img: "[attachment_4](attachment)", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/madenciicom/squidgamex/refs/heads/main/SquidGameX_KaiXar.lua'))()" },
+            { name: "Elemental Dungeons", img: "[attachment_8](attachment)", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/xpa1n/Scripts/main/ElementalDungeons.lua'))()" }
+        ];
+        function render() {
+            let container = document.getElementById('container');
+            scripts.forEach(s => {
+                container.innerHTML += `<div class="card"><img src="${s.img}"><div class="card-content"><h3>${s.name}</h3><button class="copy-btn" onclick="copy('${s.url}')">COPY SCRIPT</button></div></div>`;
+            });
+            document.getElementById('count').innerText = scripts.length;
+        }
+        function copy(text) { navigator.clipboard.writeText(text); alert('Script copied to clipboard!'); }
+        function filter() {
+            let input = document.getElementById('search').value.toLowerCase();
+            document.querySelectorAll('.card').forEach(c => c.style.display = c.innerText.toLowerCase().includes(input) ? "" : "none");
+        }
+        render();
+    </script>
+</body>
+</html>
