@@ -13,7 +13,7 @@
     </style>
 </head>
 <body>
-    <div class="header">⚡ DEV SCRIPTS</div>
+    <div class="header">⚡ DEV-SCRIPTS</div>
     <input type="text" id="search" placeholder="🔍 Search games..." onkeyup="filter()">
     <div id="container"></div>
 
@@ -41,7 +41,8 @@
             { name: "Blox Fruits", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/AhmadV99/Speed-Hub-X/main/Speed%20Hub%20X.lua',true))()" },
             { name: "Mad City", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua'))()" },
             { name: "Grow a Garden", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/ZusumeHub/ZusumeHub/refs/heads/main/UpdateZysume'))()" },
-            { name: "Phantom Forces", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/jsdhaijs/autofatrm/refs/heads/main/pflite'))()" }
+            { name: "Phantom Forces", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/jsdhaijs/autofatrm/refs/heads/main/pflite'))()" },
+            { name: "Garden Horizon (Alt)", url: "loadstring(game:HttpGet('https://vxezestudio.online/api/scripts/script_gb12wihwnml/plain'))()" }
         ];
 
         function render() {
@@ -59,7 +60,7 @@
         }
 
         function copy(text) {
-            navigator.clipboard.writeText(text).then(() => alert('Copied!')).catch(() => alert('Failed'));
+            navigator.clipboard.writeText(text).then(() => alert('Copied!')).catch(() => alert('Failed to copy.'));
         }
 
         function filter() {
