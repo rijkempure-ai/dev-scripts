@@ -6,9 +6,8 @@
         body { background: #0a0a0a; color: #fff; font-family: sans-serif; padding: 15px; }
         .header { text-align: center; font-size: 24px; color: #00ffcc; margin-bottom: 20px; }
         #search { width: 100%; padding: 15px; border-radius: 10px; border: 1px solid #444; background: #1a1a1a; color: #fff; margin-bottom: 20px; box-sizing: border-box; }
-        .card { background: #1a1a1a; border-radius: 15px; margin-bottom: 20px; padding: 15px; border: 1px solid #333; }
-        .card img { width: 100%; height: 150px; object-fit: cover; border-radius: 10px; margin-bottom: 10px; }
-        .btn { background: #00ffcc; border: none; padding: 12px; width: 100%; border-radius: 8px; font-weight: bold; cursor: pointer; }
+        .card { background: #1a1a1a; border-radius: 15px; margin-bottom: 20px; padding: 20px; border: 1px solid #333; }
+        .btn { background: #00ffcc; border: none; padding: 15px; width: 100%; border-radius: 8px; font-weight: bold; cursor: pointer; color: #000; font-size: 16px; }
     </style>
 </head>
 <body>
@@ -21,7 +20,6 @@
             { name: "99 Nights in the Forest", url: "loadstring(game:HttpGet('https://pastebin.com/raw/LPbPPNpC'))()" },
             { name: "Blox Fruit (Pvp)", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/hermanos-dev/hermanos-hub/refs/heads/main/Loader.lua'))()" },
             { name: "Squid X Game 3", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/madenciicom/squidgamex/refs/heads/main/SquidGameX_KaiXar.lua'))()" },
-            { name: "1+ Speed Keyboard Escape", url: "loadstring(game:HttpGet('https://www.luxyhub.space/api/loader/luxyhub'))()" },
             { name: "Elemental Dungeons", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/xpa1n/Scripts/main/ElementalDungeons.lua'))()" },
             { name: "Blox fruits (Grinding)", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/flazhy/QuantumOnyx/refs/heads/main/QuantumOnyx.lua'))()" },
             { name: "Rivals", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/awakeningswifters/LexusHubLoader/refs/heads/main/Loader.lua'))()" },
@@ -47,16 +45,23 @@
             let container = document.getElementById('container');
             scripts.forEach(s => {
                 container.innerHTML += `<div class="card">
-                    <img src="https://ui-avatars.com/api/?name=${encodeURIComponent(s.name)}&background=000&color=fff&size=256" alt="${s.name}">
                     <h3>${s.name}</h3>
                     <button class="btn" onclick="copy('${s.url}')">COPY SCRIPT</button>
                 </div>`;
             });
         }
-        function copy(text) { navigator.clipboard.writeText(text); alert('Copied!'); }
+        function copy(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Copied to clipboard!');
+            }).catch(err => {
+                prompt('Copy failed. Manually copy this:', text);
+            });
+        }
         function filter() {
             let input = document.getElementById('search').value.toLowerCase();
-            document.querySelectorAll('.card').forEach(c => c.style.display = c.innerText.toLowerCase().includes(input) ? "" : "none");
+            document.querySelectorAll('.card').forEach(c => {
+                c.style.display = c.innerText.toLowerCase().includes(input) ? "" : "none";
+            });
         }
         render();
     </script>
