@@ -39,7 +39,7 @@
 
         function copy(text) {
             navigator.clipboard.writeText(text).then(() => {
-                alert('Copied successfully!');
+                alert('Copied!');
             }).catch(() => {
                 const area = document.createElement("textarea");
                 area.value = text;
