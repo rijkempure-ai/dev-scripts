@@ -7,7 +7,7 @@
         .header { text-align: center; font-size: 24px; color: #00ffcc; margin-bottom: 20px; }
         #search { width: 100%; padding: 15px; border-radius: 10px; border: 1px solid #444; background: #111; color: #fff; margin-bottom: 20px; box-sizing: border-box; }
         .card { background: #111; border-radius: 10px; margin-bottom: 15px; padding: 15px; border: 1px solid #333; display: flex; align-items: center; }
-        .card img { width: 50px; height: 50px; border-radius: 5px; margin-right: 15px; object-fit: cover; }
+        .card img { width: 50px; height: 50px; border-radius: 5px; margin-right: 15px; object-fit: cover; background: #222; }
         .info { flex-grow: 1; }
         .btn { background: #00ffcc; border: none; padding: 10px 15px; border-radius: 5px; font-weight: bold; cursor: pointer; color: #000; display: block; margin-top: 8px; width: 100%; }
     </style>
@@ -19,14 +19,16 @@
 
     <script>
         const scripts = [
-            { name: "Blox Fruit", img: "https://tr.rbxcdn.com/f02e606a550d4f3b7d727b3b3a620610/150/150/Image/Png", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/hermanos-dev/hermanos-hub/refs/heads/main/Loader.lua'))()" },
+            { name: "Blox Fruit (Pvp)", img: "https://tr.rbxcdn.com/f02e606a550d4f3b7d727b3b3a620610/150/150/Image/Png", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/hermanos-dev/hermanos-hub/refs/heads/main/Loader.lua'))()" },
             { name: "Murder Mystery 2", img: "https://tr.rbxcdn.com/7b165b6b8b0e5d0a1b8c1a1f1e1d1c1a/150/150/Image/Png", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/xv3gasx/Murder-Mystery-2/refs/heads/main/Release.lua'))()" },
             { name: "Jailbreak", img: "https://tr.rbxcdn.com/f9b4c09d066b1897d266e7b1a646c039/150/150/Image/Png", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/BlitzlsKing/UniversalFarm/refs/heads/main/Jailbreak/autoRob'))()" },
             { name: "Phantom Forces", img: "https://tr.rbxcdn.com/15291244243685324203133644023412/150/150/Image/Png", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/jsdhaijs/autofatrm/refs/heads/main/pflite'))()" },
             { name: "Rivals", img: "https://tr.rbxcdn.com/00e84d9f67a224d0818c644144365780/150/150/Image/Png", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/awakeningswifters/LexusHubLoader/refs/heads/main/Loader.lua'))()" },
             { name: "99 Nights in the Forest", img: "https://tr.rbxcdn.com/3932e67a07c975a596144e592750e334/150/150/Image/Png", url: "loadstring(game:HttpGet('https://pastebin.com/raw/LPbPPNpC'))()" },
             { name: "Squid X Game 3", img: "https://tr.rbxcdn.com/979d9e4c849e7b396155694c979d9e4c/150/150/Image/Png", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/madenciicom/squidgamex/refs/heads/main/SquidGameX_KaiXar.lua'))()" },
-            { name: "Elemental Dungeons", img: "https://tr.rbxcdn.com/078d15a5100067167166160565814561/150/150/Image/Png", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/xpa1n/Scripts/main/ElementalDungeons.lua'))()" }
+            { name: "Elemental Dungeons", img: "https://tr.rbxcdn.com/078d15a5100067167166160565814561/150/150/Image/Png", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/xpa1n/Scripts/main/ElementalDungeons.lua'))()" },
+            { name: "Blox Fruits (Grinding)", img: "https://tr.rbxcdn.com/f02e606a550d4f3b7d727b3b3a620610/150/150/Image/Png", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/flazhy/QuantumOnyx/refs/heads/main/QuantumOnyx.lua'))()" },
+            { name: "Tha Bronx Duels", img: "https://tr.rbxcdn.com/15291244243685324203133644023412/150/150/Image/Png", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/sneekygoober/The-Bronx-Duels-Silent-Aim-And-Anti-Jam-Keyless-Script/refs/heads/main/main.luau'))()" }
         ];
 
         function render() {
@@ -34,7 +36,7 @@
             container.innerHTML = "";
             scripts.forEach(s => {
                 container.innerHTML += `<div class="card">
-                    <img src="${s.img}" alt="${s.name}">
+                    <img src="${s.img}" alt="Icon">
                     <div class="info">
                         <strong>${s.name}</strong>
                         <button class="btn" onclick="copy('${s.url.replace(/'/g, "\\'")}')">COPY SCRIPT</button>
@@ -44,9 +46,7 @@
         }
 
         function copy(text) {
-            navigator.clipboard.writeText(text).then(() => alert('Copied to clipboard!')).catch(() => {
-                const a = document.createElement("textarea"); a.value = text; document.body.appendChild(a); a.select(); document.execCommand("copy"); document.body.removeChild(a); alert('Copied manually!');
-            });
+            navigator.clipboard.writeText(text).then(() => alert('Copied!')).catch(() => alert('Failed to copy.'));
         }
 
         function filter() {
