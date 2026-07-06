@@ -3,10 +3,11 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-        body { background: #0a0a0a; color: #fff; font-family: sans-serif; padding: 15px; }
-        .header { text-align: center; font-size: 24px; color: #00ffcc; margin-bottom: 20px; }
-        #search { width: 100%; padding: 15px; border-radius: 10px; border: 1px solid #444; background: #1a1a1a; color: #fff; margin-bottom: 20px; box-sizing: border-box; }
-        .card { background: #1a1a1a; border-radius: 15px; margin-bottom: 20px; padding: 20px; border: 1px solid #333; }
+        body { background: #0a0a0a; color: #fff; font-family: sans-serif; padding: 15px; margin: 0; }
+        .header { text-align: center; font-size: 28px; color: #00ffcc; margin: 20px 0; font-weight: bold; }
+        #search { width: 100%; padding: 15px; border-radius: 12px; border: 1px solid #444; background: #1a1a1a; color: #fff; margin-bottom: 20px; box-sizing: border-box; }
+        .card { background: #1a1a1a; border-radius: 15px; margin-bottom: 20px; padding: 15px; border: 1px solid #333; }
+        .card img { width: 100%; height: 180px; object-fit: cover; border-radius: 10px; margin-bottom: 10px; }
         .btn { background: #00ffcc; border: none; padding: 15px; width: 100%; border-radius: 8px; font-weight: bold; cursor: pointer; color: #000; font-size: 16px; }
     </style>
 </head>
@@ -17,46 +18,41 @@
 
     <script>
         const scripts = [
-            { name: "99 Nights in the Forest", url: "loadstring(game:HttpGet('https://pastebin.com/raw/LPbPPNpC'))()" },
-            { name: "Blox Fruit (Pvp)", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/hermanos-dev/hermanos-hub/refs/heads/main/Loader.lua'))()" },
-            { name: "Squid X Game 3", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/madenciicom/squidgamex/refs/heads/main/SquidGameX_KaiXar.lua'))()" },
-            { name: "Elemental Dungeons", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/xpa1n/Scripts/main/ElementalDungeons.lua'))()" },
-            { name: "Blox fruits (Grinding)", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/flazhy/QuantumOnyx/refs/heads/main/QuantumOnyx.lua'))()" },
-            { name: "Rivals", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/awakeningswifters/LexusHubLoader/refs/heads/main/Loader.lua'))()" },
-            { name: "Slime Rng", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/zenirh/BestScriptsHub/refs/heads/main/HubMenu.lua'))()" },
-            { name: "Sell lemons", url: "loadstring(game:HttpGet('https://pastefy.app/YjVlc4pj/raw'))()" },
-            { name: "Steal a Brainrot", url: "loadstring(game:HttpGet('https://voidexternal.xyz/api/cnh1ahnm.lua'))()" },
-            { name: "Tha bronx duels", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/sneekygoober/The-Bronx-Duels-Silent-Aim-And-Anti-Jam-Keyless-Script/refs/heads/main/main.luau'))()" },
-            { name: "Jailbreak", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/BlitzlsKing/UniversalFarm/refs/heads/main/Jailbreak/autoRob'))()" },
-            { name: "Monkey Bomb Tag", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/gumanba/Scripts/main/MonkeyBombTag'))()" },
-            { name: "Sailor Piece", url: "loadstring(game:HttpGet('https://api.luarmor.net/files/v3/loaders/d8824b23a4d9f2e0d62b4e69397d206b.lua'))()" },
-            { name: "Attack on Titan", url: "loadstring(game:HttpGet('https://pastebin.com/raw/qcucSQdE'))()" },
-            { name: "Aimbot (All Games)", url: "loadstring(game:HttpGet('https://tvon.pages.dev/lua/AimBot.lua'))()" },
-            { name: "Survive The Apocalypse", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/xploitforceofficial-stack/pinatpublicloader/refs/heads/main/pinatloader.lua'))()" },
-            { name: "Garden Horizon", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/LynX99-9/komtolmmek2/refs/heads/main/Garden%20Horizon'))()" },
-            { name: "Murder Mystery 2", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/xv3gasx/Murder-Mystery-2/refs/heads/main/Release.lua'))()" },
-            { name: "Blox fruits", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/AhmadV99/Speed-Hub-X/main/Speed%20Hub%20X.lua',true))()" },
-            { name: "Mad City", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua'))()" },
-            { name: "Grow a Garden", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/ZusumeHub/ZusumeHub/refs/heads/main/UpdateZysume'))()" },
-            { name: "Phantom Forces", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/jsdhaijs/autofatrm/refs/heads/main/pflite'))()" }
+            { name: "Blox Fruit", img: "https://static.wikia.nocookie.net/bloxfruits/images/d/d7/Blox_Fruits_Logo.png", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/hermanos-dev/hermanos-hub/refs/heads/main/Loader.lua'))()" },
+            { name: "Murder Mystery 2", img: "https://tr.rbxcdn.com/7b165b6b8b0e5d0a1b8c1a1f1e1d1c1a/512/512/Image/Png", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/xv3gasx/Murder-Mystery-2/refs/heads/main/Release.lua'))()" },
+            { name: "Jailbreak", img: "https://tr.rbxcdn.com/f9b4c09d066b1897d266e7b1a646c039/512/512/Image/Png", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/BlitzlsKing/UniversalFarm/refs/heads/main/Jailbreak/autoRob'))()" },
+            { name: "Phantom Forces", img: "https://tr.rbxcdn.com/15291244243685324203133644023412/512/512/Image/Png", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/jsdhaijs/autofatrm/refs/heads/main/pflite'))()" },
+            { name: "Rivals", img: "https://tr.rbxcdn.com/00e84d9f67a224d0818c644144365780/512/512/Image/Png", url: "loadstring(game:HttpGet('https://raw.githubusercontent.com/awakeningswifters/LexusHubLoader/refs/heads/main/Loader.lua'))()" }
         ];
 
         function render() {
             let container = document.getElementById('container');
+            container.innerHTML = "";
             scripts.forEach(s => {
                 container.innerHTML += `<div class="card">
+                    <img src="${s.img}" alt="${s.name}">
                     <h3>${s.name}</h3>
-                    <button class="btn" onclick="copy('${s.url}')">COPY SCRIPT</button>
+                    <button class="btn" onclick="copyToClipboard('${s.url.replace(/'/g, "\\'")}')">COPY SCRIPT</button>
                 </div>`;
             });
         }
-        function copy(text) {
+
+        function copyToClipboard(text) {
+            // Modern Clipboard API
             navigator.clipboard.writeText(text).then(() => {
                 alert('Copied to clipboard!');
-            }).catch(err => {
-                prompt('Copy failed. Manually copy this:', text);
+            }).catch(() => {
+                // Fallback for older browsers or restricted contexts
+                const textArea = document.createElement("textarea");
+                textArea.value = text;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand("copy");
+                document.body.removeChild(textArea);
+                alert('Copied manually!');
             });
         }
+
         function filter() {
             let input = document.getElementById('search').value.toLowerCase();
             document.querySelectorAll('.card').forEach(c => {
